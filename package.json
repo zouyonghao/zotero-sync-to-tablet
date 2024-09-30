@@ -1,13 +1,13 @@
 {
-  "name": "zotero-send-to-tablet",
+  "name": "zotero-sync-to-tablet",
   "version": "0.0.1",
   "description": "Send to template function from zotfile",
   "config": {
-    "addonName": "zotero-send-to-tablet",
+    "addonName": "zotero-sync-to-tablet",
     "addonID": "yonghao.zou@epfl.ch",
-    "addonRef": "SendToTablet",
-    "addonInstance": "SendToTablet",
-    "prefsPrefix": "extensions.zotero.SendToTablet"
+    "addonRef": "SyncToTablet",
+    "addonInstance": "SyncToTablet",
+    "prefsPrefix": "extensions.zotero.SyncToTablet"
   },
   "repository": {
     "type": "git",
@@ -38,7 +38,7 @@
     "typescript": "^5.6.2",
     "typescript-eslint": "^8.7.0",
     "zotero-plugin-scaffold": "^0.1.6",
-    "zotero-types": "^2.1.1"
+    "zotero-types": "^2.2.0"
   },
   "prettier": {
     "printWidth": 80,
