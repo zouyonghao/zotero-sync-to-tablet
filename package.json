@@ -5,9 +5,9 @@
   "config": {
     "addonName": "zotero-send-to-tablet",
     "addonID": "yonghao.zou@epfl.ch",
-    "addonRef": "yonghao.zou",
-    "addonInstance": "sendToTablet",
-    "prefsPrefix": "extensions.zotero.yonghao.zou"
+    "addonRef": "SendToTablet",
+    "addonInstance": "SendToTablet",
+    "prefsPrefix": "extensions.zotero.SendToTablet"
   },
   "repository": {
     "type": "git",

@@ -1,8 +1,5 @@
 import {
   BasicExampleFactory,
-  HelperExampleFactory,
-  KeyExampleFactory,
-  PromptExampleFactory,
   UIExampleFactory,
 } from "./modules/examples";
 import { config } from "../package.json";
@@ -19,19 +16,7 @@ async function onStartup() {
 
   initLocale();
 
-  // BasicExampleFactory.registerPrefs();
-
-  // BasicExampleFactory.registerNotifier();
-
-  // KeyExampleFactory.registerShortcuts();
-
-  // await UIExampleFactory.registerExtraColumn();
-
-  // await UIExampleFactory.registerExtraColumnWithCustomCell();
-
-  // UIExampleFactory.registerItemPaneSection();
-
-  // UIExampleFactory.registerReaderItemPaneSection();
+  BasicExampleFactory.registerPrefs();
 
   await Promise.all(
     Zotero.getMainWindows().map((win) => onMainWindowLoad(win)),
@@ -66,25 +51,7 @@ async function onMainWindowLoad(win: Window): Promise<void> {
 
   UIExampleFactory.registerRightClickMenuItem();
 
-  // UIExampleFactory.registerRightClickMenuPopup(win);
-
-  // UIExampleFactory.registerWindowMenuWithSeparator();
-
-  // PromptExampleFactory.registerNormalCommandExample();
-
-  // PromptExampleFactory.registerAnonymousCommandExample(win);
-
-  // PromptExampleFactory.registerConditionalCommandExample();
-
   await Zotero.Promise.delay(1000);
-
-  // popupWin.changeLine({
-  //   progress: 100,
-  //   text: `[100%] ${getString("startup-finish")}`,
-  // });
-  // popupWin.startCloseTimer(5000);
-
-  // addon.hooks.onDialogEvents("dialogExample");
 }
 
 async function onMainWindowUnload(win: Window): Promise<void> {
@@ -130,13 +97,13 @@ async function onNotify(
  * @param data event data
  */
 async function onPrefsEvent(type: string, data: { [key: string]: any }) {
-  // switch (type) {
-  //   case "load":
-  //     registerPrefsScripts(data.window);
-  //     break;
-  //   default:
-  //     return;
-  // }
+  switch (type) {
+    case "load":
+      registerPrefsScripts(data.window);
+      break;
+    default:
+      return;
+  }
 }
 
 function onShortcuts(type: string) {
