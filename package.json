@@ -1,6 +1,6 @@
 {
   "name": "zotero-sync-to-tablet",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Sync files to tablet",
   "config": {
     "addonName": "zotero-sync-to-tablet",
