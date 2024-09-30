@@ -1,7 +1,7 @@
 {
   "name": "zotero-sync-to-tablet",
-  "version": "0.0.1",
-  "description": "Send to template function from zotfile",
+  "version": "0.0.2",
+  "description": "Sync files to tablet",
   "config": {
     "addonName": "zotero-sync-to-tablet",
     "addonID": "yonghao.zou@epfl.ch",
@@ -11,13 +11,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/windingwind/zotero-plugin-template.git"
+    "url": "git+https://github.com/zouyonghao/zotero-sync-to-tablet.git"
   },
   "author": "Yonghao Zou",
   "bugs": {
-    "url": "https://github.com/windingwind/zotero-plugin-template/issues"
+    "url": "https://github.com/zouyonghao/zotero-sync-to-tablet/issues"
   },
-  "homepage": "https://github.com/windingwind/zotero-plugin-template#readme",
+  "homepage": "https://github.com/zouyonghao/zotero-sync-to-tablet#readme",
   "license": "AGPL-3.0-or-later",
   "scripts": {
     "start": "zotero-plugin serve",
