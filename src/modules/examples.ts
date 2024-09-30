@@ -144,7 +144,18 @@ export class UIExampleFactory {
       tag: "menuitem",
       id: "zotero-itemmenu-addontemplate-test",
       label: getString("menuitem-label"),
-      commandListener: (ev) => addon.hooks.onDialogEvents("dialogExample"),
+      commandListener: (ev) => {
+        for (const item of ztoolkit.getGlobal("ZoteroPane").getSelectedItems()) {
+          // ztoolkit.log(item);
+          if (item.isAttachment()) {
+            ztoolkit.log(item);
+          } else {
+            item.getAttachments().forEach((attachment) => {
+              ztoolkit.log(Zotero.Items.get(attachment).getFilePath());
+            })
+          }
+        }
+      },
       icon: menuIcon,
     });
   }
