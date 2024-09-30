@@ -1,1 +1,1 @@
-A Zotero plugin for sending and retriving files from a directory.
+A Zotero plugin for sending and retrieving files from a directory.
