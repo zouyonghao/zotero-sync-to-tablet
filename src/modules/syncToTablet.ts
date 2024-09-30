@@ -49,7 +49,7 @@ export class SyncToTablet {
     function copyFileToDirectory(item: Zotero.Item) {
       const filePath = item.getFilePath();
       if (typeof filePath === 'string') {
-        const fileName = Zotero.File.encodeFilePath(filePath).split("/").pop();
+        const fileName = PathUtils.filename(filePath);
         Zotero.File.removeIfExists(getPref("directory") + "/" + fileName);
         Zotero.File.copyToUnique(filePath, getPref("directory") + "/" + fileName);
       }
@@ -95,7 +95,7 @@ export class SyncToTablet {
       if (filePath == false) {
         return;
       }
-      const filename = Zotero.File.encodeFilePath(filePath).split("/").pop()!;
+      const filename = PathUtils.filename(filePath);
       Zotero.File.iterateDirectory(directory, (entry: any) => {
         if (entry.name === filename) {
           ztoolkit.log("File Found: " + entry.path);
