@@ -20,6 +20,10 @@ export class SyncToTablet {
       id: "zotero-sync-to-tablet-send",
       label: getString("send-label"),
       commandListener: () => {
+        if (getPref("directory") === undefined || getPref("directory") === "") {
+          Zotero.alert(window, "Error", "Please set the directory in the preferences first.");
+          return;
+        }
         for (const item of ztoolkit.getGlobal("ZoteroPane").getSelectedItems()) {
           // ztoolkit.log(item);
           if (item.isAttachment()) {
@@ -45,8 +49,8 @@ export class SyncToTablet {
     function copyFileToDirectory(item: Zotero.Item) {
       const filePath = item.getFilePath();
       if (typeof filePath === 'string') {
-        // get file name
-        const fileName = filePath.split("/").pop();
+        const fileName = Zotero.File.encodeFilePath(filePath).split("/").pop();
+        Zotero.File.removeIfExists(getPref("directory") + "/" + fileName);
         Zotero.File.copyToUnique(filePath, getPref("directory") + "/" + fileName);
       }
     }
@@ -60,6 +64,10 @@ export class SyncToTablet {
       id: "zotero-sync-to-tablet-retrieve",
       label: getString("retrieve-label"),
       commandListener: () => {
+        if (getPref("directory") === undefined || getPref("directory") === "") {
+          Zotero.alert(window, "Error", "Please set the directory in the preferences first.");
+          return;
+        }
         for (const item of ztoolkit.getGlobal("ZoteroPane").getSelectedItems()) {
           // ztoolkit.log(item);
           if (item.isAttachment()) {
@@ -83,7 +91,11 @@ export class SyncToTablet {
 
     function storeFileToItem(item: Zotero.Item) {
       const directory = getPref("directory")!.toString();
-      const filename = (item.getFilePath()!.toString()).split("/").pop()!;
+      const filePath = item.getFilePath();
+      if (filePath == false) {
+        return;
+      }
+      const filename = Zotero.File.encodeFilePath(filePath).split("/").pop()!;
       Zotero.File.iterateDirectory(directory, (entry: any) => {
         if (entry.name === filename) {
           ztoolkit.log("File Found: " + entry.path);
