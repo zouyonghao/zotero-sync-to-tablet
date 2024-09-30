@@ -24,7 +24,7 @@ async function onMainWindowLoad(win: Window): Promise<void> {
   addon.data.ztoolkit = createZToolkit();
 
   SyncToTablet.registerSendToTablet();
-  SyncToTablet.registerRetriveFromTablet();
+  SyncToTablet.registerRetrieveFromTablet();
 
   await Zotero.Promise.delay(1000);
 }
