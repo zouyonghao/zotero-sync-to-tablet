@@ -1,6 +1,7 @@
 import { config } from "../../package.json";
 import { getString } from "../utils/locale";
 import { getPref } from "../utils/prefs";
+import { getSeparator } from "../utils/path";
 
 export class SyncToTablet {
   static registerPrefs() {
@@ -50,8 +51,10 @@ export class SyncToTablet {
       const filePath = item.getFilePath();
       if (typeof filePath === 'string') {
         const fileName = PathUtils.filename(filePath);
-        Zotero.File.removeIfExists(getPref("directory") + "/" + fileName);
-        Zotero.File.copyToUnique(filePath, getPref("directory") + "/" + fileName);
+        ztoolkit.log("File Path: " + filePath);
+        ztoolkit.log("File Name: " + fileName);
+        Zotero.File.removeIfExists(getPref("directory") + getSeparator() + fileName);
+        Zotero.File.copyToUnique(filePath, getPref("directory") + getSeparator() + fileName);
       }
     }
   }
@@ -108,4 +111,5 @@ export class SyncToTablet {
     }
 
   }
+
 }
